@@ -7,7 +7,8 @@ import (
 
 func main() {
 	http.HandleFunc("/", HandleRootRoute)
-	http.HandleFunc("/frontend/img", HandleImgRoute)
+	http.HandleFunc("/img", HandleImgRoute)
+	http.HandleFunc("/imglabel", HandleImgLabelRoute)
 
 	log.Println("Server starting on :8080")
 	err := http.ListenAndServe(":8080", nil)
