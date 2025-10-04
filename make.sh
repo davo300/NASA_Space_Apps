@@ -1,2 +1,4 @@
-go build src/*
-npm run build ./frontend
+go build -o bin/main src/* 
+cd frontend
+npm run build
+
