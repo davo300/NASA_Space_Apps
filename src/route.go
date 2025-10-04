@@ -41,3 +41,7 @@ func HandleImgLabelRoute(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("File received from user:", handler.Filename)
 }
+
+func HandleImgNames(w http.Response, r *http.ResponseWriter) {
+	
+}
