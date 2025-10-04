@@ -83,7 +83,7 @@ const App: React.FC = () => {
       </div>
 
       <div className="Map">
-        <ZoomableImage clickHandler={outerDivClicked} src="/img/test_image.jpg" />
+        <ZoomableImage clickHandler={outerDivClicked} src="/src/assets/test_image.jpg" />
       </div>
 
       <div className="LabelsDisplay">
