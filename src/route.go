@@ -8,7 +8,7 @@ import (
 )
 
 func HandleRootRoute(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w,r,"./frontend/dist/index.html")
+	http.ServeFile(w,r,"./frontend/index.html")
 }
 
 func HandleImgRoute(w http.ResponseWriter, r *http.Request) {
