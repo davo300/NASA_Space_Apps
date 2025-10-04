@@ -12,7 +12,7 @@ func HandleRootRoute(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleImgRoute(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./frontend/img/test_image.jpg")
+	http.ServeFile(w, r, "./frontend/public/img/test_image.jpg")
 }
 
 func HandleImgLabelRoute(w http.ResponseWriter, r *http.Request) {
