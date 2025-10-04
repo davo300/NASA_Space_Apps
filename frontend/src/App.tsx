@@ -54,13 +54,18 @@ const App: React.FC = () => {
       mouseY -= rect.y;
 
       const shapes = document.getElementById('shapes')
-      if (shapes) {
+      if (crosshair && shapes) {
 
-        const text = document.createElementNS(SVGNS, 'text');
-        text.setAttribute('x', mouseX.toString())
-        text.setAttribute('y', mouseY.toString())
-        text.append('gay')
-        shapes.append(text)
+        if (crosshair.checked) {
+
+          const text = document.createElementNS(SVGNS, 'text');
+          text.setAttribute('x', mouseX.toString())
+          text.setAttribute('y', mouseY.toString())
+          text.append('gay')
+          shapes.append(text)
+          crosshair.checked = false
+
+        }
 
       }
 
