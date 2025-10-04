@@ -6,8 +6,8 @@ dim = [bound.width, bound.height]
 map.addEventListener('click', (e) => {
 	zoomed = !zoomed
 	pos = [e.x - offset[0] - dim[0] / 4, e.y - offset[1] - dim[1] / 4]
-	pos[0] = Math.max(pos[0], 0) * 2
-	pos[1] = Math.max(pos[1], 0) * 2
+	pos[0] = Math.max(Math.min(pos[0], dim[0] / 2), 0) * 2
+	pos[1] = Math.max(Math.min(pos[1], dim[1] / 2), 0) * 2
 	console.log(pos)
 
 	if(zoomed)
