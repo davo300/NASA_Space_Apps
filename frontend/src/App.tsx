@@ -40,15 +40,28 @@ const App: React.FC = () => {
 
   };
 
-  const deleteLabel = () => {
-    if(labels.length) {
-      labels.pop()
+  const trueDeleteLabel = (lb?: Label) => {
+    if(lb) {
+
+      const textElem = labelMap.get(lb.id)
+      const shapes = document.getElementById('shapes')
+
+      if(textElem && shapes)
+        shapes.removeChild(textElem)
+      labelMap.delete(lb.id);
       setLabels([...labels])
+
     }
+  }
+
+  const deleteLabel = () => {
+    const l = labels.pop()
+    trueDeleteLabel(l)
   };
 
   const deleteSpecificLabel = (id: number) => {
     const ind = labels.findIndex((x) => x.id == id)
+    trueDeleteLabel(labels[ind])
     labels.splice(ind, 1)
     setLabels([...labels])
   };
@@ -64,6 +77,16 @@ const App: React.FC = () => {
     if(name)
       setLabelName(name)
     setCurrentLabelId(id)
+
+  }
+
+  const clearLabels = () => {
+
+    const shapes = document.getElementById('shapes')
+    if(shapes)
+      for(; shapes.lastChild; shapes.removeChild(shapes.lastChild));
+    setLabels([])
+    labelMap.clear()
 
   }
 

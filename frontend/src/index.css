@@ -16,14 +16,14 @@
 		border-style: inset;
 	}
 }
-.deleteSingle
+.deleteSingle,.location
 {
 	display: none;
 }
 li
 {
 	margin: 10px 0;
-	&:hover>.deleteSingle
+	&:hover>.deleteSingle,&:hover>.location
 	{
 		display: inline;
 	}
