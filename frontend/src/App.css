@@ -7,14 +7,14 @@
 {
 	margin: 0;
 	display: block;
-    text-align:center;
+    text-align:left;
 }
 
 .LabelButtons
 {
 	margin: 0;
 	display: block;
-    text-align:center;
+    text-align:left;
 }
 
 .Map
@@ -23,5 +23,5 @@
     width: "800px";
 	margin: 0;
 	display: block;
-    text-align:center;
+    text-align:left;
 }
