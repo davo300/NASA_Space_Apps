@@ -8,13 +8,11 @@ interface ZoomableImageProps {
 
 const ZoomableImage: React.FC<ZoomableImageProps> = ({ src }) => {
   return (
-    <div style={{ border: "1px solid #ccc", width: "800px", marginTop: "20px" }}>
-      <TransformWrapper>
-        <TransformComponent>
-          <img src={src} alt="NASA" style={{ width: "100%" }} />
-        </TransformComponent>
-      </TransformWrapper>
-    </div>
+    <TransformWrapper>
+      <TransformComponent>
+        <img src={src} alt="NASA" style={{ width: "100%" }} />
+      </TransformComponent>
+    </TransformWrapper>
   );
 };
 

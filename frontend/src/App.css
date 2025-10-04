@@ -1,0 +1,27 @@
+#body-1
+{
+    padding:20px;
+}
+
+.title
+{
+	margin: 0;
+	display: block;
+    text-align:center;
+}
+
+.LabelButtons
+{
+	margin: 0;
+	display: block;
+    text-align:center;
+}
+
+.Map
+{
+    border: "1px solid #ccc";
+    width: "800px";
+	margin: 0;
+	display: block;
+    text-align:center;
+}
