@@ -4,19 +4,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 )
 
 func HandleRootRoute(w http.ResponseWriter, r *http.Request) {
-	// Vite index.html
 	http.ServeFile(w, r, "./frontend/dist/index.html")
 }
 
 func HandleImgRoute(w http.ResponseWriter, r *http.Request) {
-	// Serve files under /img/... from public/img
-	http.ServeFile(w, r, "./frontend/public"+r.URL.Path)
+	http.ServeFile(w, r, "./frontend/src/assets"+ r.URL.Path)
 }
 
 func HandleImgLabelRoute(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +27,7 @@ func HandleImgLabelRoute(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
-	dst, err := os.Create("./frontend/public/img/test_image_change.jpg")
+	dst, err := os.Create("./frontend/src/assets/test_image.jpg")
 	if err != nil {
 		http.Error(w, "Error creating file", http.StatusBadRequest)
 		return
@@ -48,7 +45,7 @@ func HandleImgNames(w http.ResponseWriter, r* http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method not allowed", http.StatusUnauthorized)
 	}
-	files, err := os.ReadDir("./frontend/public/img")
+	files, err := os.ReadDir("./frontend/src/assets")
 	if err != nil {
 		http.Error(w, "Error reading image files", http.StatusInternalServerError)
 	}	
