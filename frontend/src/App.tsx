@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ZoomableImage from "./components/ZoomableImage";
 import LabelToolbar from "./components/LabelToolbar";
 import LabelList from "./components/LabelList";
+import testIMG from "../img/test_image.jpg";
 
 interface Label {
   id: number;
@@ -34,7 +35,7 @@ const App: React.FC = () => {
         onSaveLabels={saveLabels}
         onClearLabels={() => setLabels([])}
       />
-      <ZoomableImage src="/img/test_img.jpg" />
+      <ZoomableImage src="/img/test_image.jpg" />
       <LabelList labels={labels} onDeleteLabel={(id) => deleteLabel(id)} />
     </div>
   );
