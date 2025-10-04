@@ -1,4 +1,5 @@
 // src/App.tsx
+import "./App.css";
 import React, { useState } from "react";
 import ZoomableImage from "./components/ZoomableImage";
 import LabelToolbar from "./components/LabelToolbar";
@@ -69,16 +70,25 @@ const App: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>NASA Image Labeler</h1>
-      <LabelToolbar
-        onAddLabel={addLabel}
-        onDeleteLabel={deleteLabel}
-        onSaveLabels={saveLabels}
-        onClearLabels={() => setLabels([])}
-      />
-      <ZoomableImage clickHandler={outerDivClicked} src="/img/test_image.jpg" />
-      <LabelList labels={labels} onSetLabel={markLabel} onDeleteLabel={(id) => deleteSpecificLabel(id)} />
+    <div id="body-1">
+      <h1 className="title">NASA Image Labeler</h1>
+
+      <div className="LabelButtons">
+        <LabelToolbar
+          onAddLabel={addLabel}
+          onDeleteLabel={deleteLabel}
+          onSaveLabels={saveLabels}
+          onClearLabels={() => setLabels([])}
+        />
+      </div>
+
+      <div className="Map">
+        <ZoomableImage clickHandler={outerDivClicked} src="/img/test_image.jpg" />
+      </div>
+
+      <div className="LabelsDisplay">
+        <LabelList labels={labels} onSetLabel={markLabel} onDeleteLabel={(id) => deleteSpecificLabel(id)} />
+      </div>
     </div>
   );
 };
