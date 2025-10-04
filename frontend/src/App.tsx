@@ -5,6 +5,8 @@ import LabelToolbar from "./components/LabelToolbar";
 import LabelList from "./components/LabelList";
 import testIMG from "../img/test_image.jpg";
 
+const SVGNS = 'http://www.w3.org/2000/svg'
+
 interface Label {
   id: number;
   name: string;
@@ -12,6 +14,7 @@ interface Label {
 
 const App: React.FC = () => {
   const [labels, setLabels] = useState<Label[]>([]);
+  const crosshair = document.getElementById('crosshair') as HTMLInputElement
 
   const addLabel = () => {
     const newLabel: Label = { id: labels.length + 1, name: `Label ${labels.length + 1}` };
@@ -35,6 +38,36 @@ const App: React.FC = () => {
     console.log("Labels saved:", labels);
   };
 
+  const markLabel = (name?: string | null) => {
+    if(crosshair)
+      crosshair.checked = true;
+  }
+
+  const outerDivClicked = (mouseX: number, mouseY: number) => {
+
+    const outerdiv = document.getElementById('outerdiv')
+    if(outerdiv) {
+
+      const rect = outerdiv.getBoundingClientRect()
+      mouseX -= rect.x;
+      mouseY -= rect.y;
+
+      const shapes = document.getElementById('shapes')
+      if (shapes) {
+
+        const text = document.createElementNS(SVGNS, 'text');
+        text.setAttribute('x', mouseX.toString())
+        text.setAttribute('y', mouseY.toString())
+        text.append('gay')
+        shapes.append(text)
+
+      }
+
+    }
+    console.log(mouseX, mouseY)
+
+  }
+
   return (
     <div style={{ padding: "20px" }}>
       <h1>NASA Image Labeler</h1>
@@ -44,8 +77,8 @@ const App: React.FC = () => {
         onSaveLabels={saveLabels}
         onClearLabels={() => setLabels([])}
       />
-      <ZoomableImage src="/img/test_image.jpg" />
-      <LabelList labels={labels} onDeleteLabel={(id) => deleteSpecificLabel(id)} />
+      <ZoomableImage clickHandler={outerDivClicked} src="/img/test_image.jpg" />
+      <LabelList labels={labels} onSetLabel={markLabel} onDeleteLabel={(id) => deleteSpecificLabel(id)} />
     </div>
   );
 };
