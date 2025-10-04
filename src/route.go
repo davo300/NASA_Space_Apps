@@ -27,7 +27,7 @@ func HandleImgLabelRoute(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
-	dst, err := os.Create("./frontend/src/assets/test_image.jpg")
+	dst, err := os.Create("./frontend/src/assets/" + r.URL.Path)
 	if err != nil {
 		http.Error(w, "Error creating file", http.StatusBadRequest)
 		return
@@ -53,3 +53,5 @@ func HandleImgNames(w http.ResponseWriter, r* http.Request) {
 	w.Header().Set("Content-Type", "Application-Json")
 	json.NewEncoder(w).Encode(files)
 }
+
+
