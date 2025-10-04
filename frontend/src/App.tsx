@@ -50,7 +50,7 @@ const App: React.FC = () => {
       </div>
 
       <div className="Map">
-        <ZoomableImage src="/img/test_image.jpg" />
+        <ZoomableImage src="src/assets/test_image.jpg" />
       </div>
 
       <div className="LabelsDisplay">
