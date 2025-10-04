@@ -1,3 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.toolbutt
+{
+	font-size: 1.5em;
+	padding: 8px;
+	border: 6px outset darkorchid;
+	background-color: darkorchid;
+	margin: 0.5em;
+	&:hover
+	{
+		border-color: orchid;
+		background-color: orchid;
+		cursor: pointer;
+	}
+	&:active
+	{
+		border-style: inset;
+	}
+}
