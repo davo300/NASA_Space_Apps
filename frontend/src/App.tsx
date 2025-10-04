@@ -7,6 +7,8 @@ import LabelList from "./components/LabelList";
 import testIMG from "../img/test_image.jpg";
 
 const SVGNS = 'http://www.w3.org/2000/svg'
+let NEXT_LABEL_ID = 97
+const labelMap = new Map<number, SVGElement>()
 
 interface Label {
   id: number;
@@ -15,11 +17,27 @@ interface Label {
 
 const App: React.FC = () => {
   const [labels, setLabels] = useState<Label[]>([]);
+  const [currentLabelId, setCurrentLabelId] = useState<number>(0)
+  const [currentLabelName, setLabelName] = useState<string>('')
   const crosshair = document.getElementById('crosshair') as HTMLInputElement
 
   const addLabel = () => {
-    const newLabel: Label = { id: labels.length + 1, name: `Label ${labels.length + 1}` };
+
+    const newLabel: Label = { id: NEXT_LABEL_ID++, name: `Label ${labels.length + 1}` };
+    console.log(labelMap)
     setLabels([...labels, newLabel])
+
+    const shapes = document.getElementById('shapes')
+    if (shapes) {
+
+      const text = document.createElementNS(SVGNS, 'text');
+      text.setAttribute('x', '0')
+      text.setAttribute('y', '0')
+      shapes.append(text)
+      labelMap.set(newLabel.id, text)
+
+    }
+
   };
 
   const deleteLabel = () => {
@@ -39,9 +57,14 @@ const App: React.FC = () => {
     console.log("Labels saved:", labels);
   };
 
-  const markLabel = (name?: string | null) => {
+  const markLabel = (id: number, name?:string | null) => {
+
     if(crosshair)
       crosshair.checked = true;
+    if(name)
+      setLabelName(name)
+    setCurrentLabelId(id)
+
   }
 
   const outerDivClicked = (mouseX: number, mouseY: number) => {
@@ -58,11 +81,16 @@ const App: React.FC = () => {
 
         if (crosshair.checked) {
 
-          const text = document.createElementNS(SVGNS, 'text');
-          text.setAttribute('x', mouseX.toString())
-          text.setAttribute('y', mouseY.toString())
-          text.append('gay')
-          shapes.append(text)
+          const text = labelMap.get(currentLabelId)
+          console.log(currentLabelId, text, currentLabelName)
+          if (text) {
+
+            text.setAttribute('x', mouseX.toString())
+            text.setAttribute('y', mouseY.toString())
+            for(; text.lastChild; text.removeChild(text.lastChild));
+            text.append(currentLabelName)
+
+          }
           crosshair.checked = false
 
         }
@@ -70,7 +98,6 @@ const App: React.FC = () => {
       }
 
     }
-    console.log(mouseX, mouseY)
 
   }
 
