@@ -12,8 +12,8 @@ func main() {
 
 	http.HandleFunc("/img/", HandleImgRoute)
 	http.HandleFunc("/imglabel", HandleImgLabelRoute)
-
 	http.HandleFunc("/", HandleRootRoute)
+	http.HandleFunc("/imgnames", HandleImgNames)
 
 	log.Println("Server starting on :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))

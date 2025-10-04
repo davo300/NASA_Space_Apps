@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 )
@@ -42,6 +44,15 @@ func HandleImgLabelRoute(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("File received from user:", handler.Filename)
 }
 
-func HandleImgNames(w http.Response, r *http.ResponseWriter) {
-	
+func HandleImgNames(w http.ResponseWriter, r* http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusUnauthorized)
+	}
+	files, err := os.ReadDir("./frontend/public/img")
+	if err != nil {
+		http.Error(w, "Error reading image files", http.StatusInternalServerError)
+	}	
+
+	w.Header().Set("Content-Type", "Application-Json")
+	json.NewEncoder(w).Encode(files)
 }
