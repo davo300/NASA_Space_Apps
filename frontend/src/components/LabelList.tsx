@@ -15,7 +15,7 @@ const LabelList: React.FC<Props> = ({ labels, onDeleteLabel }) => (
   <ul>
     {labels.map((label) => (
       <li key={label.id}>
-        {label.name} <button onClick={() => onDeleteLabel(label.id)}>X</button>
+        {label.name} <button className="deleteSingle" onClick={() => onDeleteLabel(label.id)}>X</button>
       </li>
     ))}
   </ul>

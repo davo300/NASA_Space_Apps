@@ -15,11 +15,20 @@ const App: React.FC = () => {
 
   const addLabel = () => {
     const newLabel: Label = { id: labels.length + 1, name: `Label ${labels.length + 1}` };
-    setLabels([...labels, newLabel]);
+    setLabels([...labels, newLabel])
   };
 
-  const deleteLabel = (id?: number) => {
-    if (id) setLabels(labels.filter((l) => l.id !== id));
+  const deleteLabel = () => {
+    if(labels.length) {
+      labels.pop()
+      setLabels([...labels])
+    }
+  };
+
+  const deleteSpecificLabel = (id: number) => {
+    const ind = labels.findIndex((x) => x.id == id)
+    labels.splice(ind, 1)
+    setLabels([...labels])
   };
 
   const saveLabels = () => {
@@ -31,12 +40,12 @@ const App: React.FC = () => {
       <h1>NASA Image Labeler</h1>
       <LabelToolbar
         onAddLabel={addLabel}
-        onDeleteLabel={() => deleteLabel()}
+        onDeleteLabel={deleteLabel}
         onSaveLabels={saveLabels}
         onClearLabels={() => setLabels([])}
       />
       <ZoomableImage src="/img/test_image.jpg" />
-      <LabelList labels={labels} onDeleteLabel={(id) => deleteLabel(id)} />
+      <LabelList labels={labels} onDeleteLabel={(id) => deleteSpecificLabel(id)} />
     </div>
   );
 };
