@@ -61,7 +61,6 @@ html, body, #root
 
 text
 {
-    
 	font-size: 1.5em;
     fill: #e9eaf5ff;
     --outlineSize: 1.5px;
@@ -71,3 +70,38 @@ text
     text-shadow: var(--outlineSizeNeg) var(--outlineSizeNeg) 0 var(--outlineColor), var(--outlineSize) var(--outlineSizeNeg) 0 var(--outlineColor), var(--outlineSizeNeg) var(--outlineSize) 0 var(--outlineColor), var(--outlineSize) var(--outlineSize) 0 var(--outlineColor);
     font-family: Nexa-Heavy;
 }
+
+#zoomButtons
+{
+    position:absolute;
+    z-index: 2;
+    padding:30px;
+    margin-block:8px;
+    right: 45%;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+    background-size: contain; /*containing the beast that is the image*/
+}
+
+#zoomButtons.ZoomInButton
+{
+    background-image: url(src/assets/zoomInIcon.png);
+}
+
+#zoomButtons.ZoomInButton:active
+{
+    background-image: url(src/assets/zoomInIconClick.png);
+}
+
+#zoomButtons.ZoomOutButton
+{
+    background-image: url(src/assets/zoomOutIcon.png);
+    margin-top:76px;
+}
+
+#zoomButtons.ZoomOutButton:active
+{
+    background-image: url(src/assets/zoomOutIconClick.png);
+}
+

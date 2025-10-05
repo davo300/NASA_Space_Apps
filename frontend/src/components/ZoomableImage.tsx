@@ -10,6 +10,10 @@ interface ZoomableImageProps {
 const ZoomableImage: React.FC<ZoomableImageProps> = ({ clickHandler, src }) => {
   return (
     <div id="outerdiv" className="Map" onClick={(e) => clickHandler(e.clientX, e.clientY)}>
+      
+      <button id="zoomButtons" className="ZoomInButton"></button>
+      <button id="zoomButtons" className="ZoomOutButton"></button>
+
       <input type="checkbox" name="dummy" id="crosshair" />
       <TransformWrapper>
         <TransformComponent>

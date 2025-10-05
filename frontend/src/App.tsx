@@ -135,6 +135,10 @@ const App: React.FC = () => {
         </svg>
 
         <ZoomableImage clickHandler={outerDivClicked} src="/src/assets/test_image.jpg" />
+
+        <svg width="93%" height="200px">
+          <rect width="100%" height="100%" fill="#0c0c0cff"> idk put something here </rect>
+        </svg>
       </div>
 
       <div id="mainColumn2">
