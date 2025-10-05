@@ -16,10 +16,12 @@
 		border-style: inset;
 	}
 }
+
 .deleteSingle,.location
 {
 	display: none;
 }
+
 li
 {
 	margin: 10px 0;
@@ -28,20 +30,15 @@ li
 		display: inline;
 	}
 }
+
 #shapes
 {
 	position: absolute;
 }
+
 #crosshair
 {
 	display: none;
-}
-
-
-#outerdiv{
-	border: 10px solid #FFFFFF;
-	width: 800px;
-	margin-top: 20px;
 }
 
 #outerdiv:has(>#crosshair:checked)

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const LabelToolbar: React.FC<Props> = ({ onAddLabel, onDeleteLabel, onSaveLabels, onClearLabels }) => (
-  <div style={{}}>
+  <div style={{width:"100%"}}>
     <button className="toolbutt" onClick={onAddLabel}>Add Label</button>
     <button className="toolbutt" onClick={onDeleteLabel}>Delete Label</button>
     <button className="toolbutt" onClick={onSaveLabels}>Save Labels</button>

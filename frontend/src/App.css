@@ -1,9 +1,30 @@
-html
+html, body, #root
 {
     background-color: black;
+    max-width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
 }
 
-@font-face {
+#main
+{
+    padding: 10px;
+}
+
+#mainColumn
+{
+    float: left;
+    width: 60%;
+}
+
+#mainColumn2
+{
+    float: left;
+    width: 40%;
+}
+
+@font-face 
+{
     font-family: Nexa-Heavy;
     src: url(/src/assets/Nexa-Heavy.ttf);
     font-weight:bold;
@@ -12,12 +33,13 @@ html
 
 .title
 {
-	width: 40%;
+	width: 80%;
     margin-block:0px;
-    color: aliceblue;
+    color: #e9eaf5ff;
 	display: block;
     text-align:left;
     font-family: Nexa-Heavy;
+    font-size: 2.5em;
 }
 
 .LabelButtons
@@ -29,14 +51,23 @@ html
 
 .Map
 {
-    border: "1px solid #ccc";
-    width: "800px";
-	margin: 0;
+    border: 5px solid #e9eaf5ff;
+    width: 92%;
+    height: 100%;
+	margin-block: 15px;
 	display: block;
     text-align:left;
 }
 
 text
 {
+    
 	font-size: 1.5em;
+    fill: #e9eaf5ff;
+    --outlineSize: 1.5px;
+    --outlineSizeNeg: -1.5px;
+    --outlineColor: #000;
+    /*WARNING!!! the following line sucks*/
+    text-shadow: var(--outlineSizeNeg) var(--outlineSizeNeg) 0 var(--outlineColor), var(--outlineSize) var(--outlineSizeNeg) 0 var(--outlineColor), var(--outlineSizeNeg) var(--outlineSize) 0 var(--outlineColor), var(--outlineSize) var(--outlineSize) 0 var(--outlineColor);
+    font-family: Nexa-Heavy;
 }

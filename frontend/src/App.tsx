@@ -125,25 +125,32 @@ const App: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: 10 }}>
-      <h1 className="title">NASA Dataset Viewer</h1>
+    <div id="main">
 
-      <div className="LabelButtons">
-        <LabelToolbar
-          onAddLabel={addLabel}
-          onDeleteLabel={deleteLabel}
-          onSaveLabels={saveLabels}
-          onClearLabels={clearLabels}
-        />
-      </div>
+      <div id="mainColumn">
+        <h1 className="title">NASA Dataset Viewer</h1>
 
-      <div className="Map">
+        <svg width="90%" height="10px">
+          <rect width="100%" height="100%" fill="#e9eaf5ff"></rect>
+        </svg>
+
         <ZoomableImage clickHandler={outerDivClicked} src="/src/assets/test_image.jpg" />
       </div>
 
-      <div className="LabelsDisplay">
-        <LabelList labels={labels} onSetLabel={markLabel} onDeleteLabel={(id) => deleteSpecificLabel(id)} />
+      <div id="mainColumn2">
+        <div className="LabelButtons">
+          <LabelToolbar
+            onAddLabel={addLabel}
+            onDeleteLabel={deleteLabel}
+            onSaveLabels={saveLabels}
+            onClearLabels={clearLabels}
+          />
+
+          <LabelList labels={labels} onSetLabel={markLabel} onDeleteLabel={(id) => deleteSpecificLabel(id)} />
+          </div>
       </div>
+
+
     </div>
   );
 };

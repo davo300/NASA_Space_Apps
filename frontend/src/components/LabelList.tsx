@@ -13,7 +13,7 @@ interface Props {
 }
 
 const LabelList: React.FC<Props> = ({ labels, onSetLabel, onDeleteLabel }) => (
-  <ul>
+  <ul className="LabelList">
     {labels.map((label) => (
       <li key={label.id}>
         <input type="text"/>

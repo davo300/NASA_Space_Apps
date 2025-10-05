@@ -9,12 +9,12 @@ interface ZoomableImageProps {
 
 const ZoomableImage: React.FC<ZoomableImageProps> = ({ clickHandler, src }) => {
   return (
-    <div id="outerdiv" onClick={(e) => clickHandler(e.clientX, e.clientY)}>
+    <div id="outerdiv" className="Map" onClick={(e) => clickHandler(e.clientX, e.clientY)}>
       <input type="checkbox" name="dummy" id="crosshair" />
       <TransformWrapper>
         <TransformComponent>
           <svg id="shapes" width="100%" height="100%"></svg>
-          <img src={src} alt="NASA" style={{ width: "100%" }} />
+          <img src={src} alt="NASA" style={{ width: '100%', height: '100%' }} />
         </TransformComponent>
       </TransformWrapper>
     </div>
