@@ -42,6 +42,11 @@ li
 	display: none;
 }
 
+#outerdiv
+{
+	text-align: right;
+}
+
 #outerdiv:has(>#crosshair:checked)
 {
 	cursor: crosshair;
