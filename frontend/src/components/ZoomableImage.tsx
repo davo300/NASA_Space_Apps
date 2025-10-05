@@ -17,6 +17,7 @@ const ZoomableImage: React.FC<ZoomableImageProps> = ({ clickHandler, src }) => {
       <input type="checkbox" name="dummy" id="crosshair" />
       <TransformWrapper>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <TransformComponent
           wrapperStyle={{
             width: "100%",
@@ -48,6 +49,11 @@ const ZoomableImage: React.FC<ZoomableImageProps> = ({ clickHandler, src }) => {
               style={{ position: "absolute", top: 0, left: 0 }}
             ></svg>
           </div>
+=======
+        <TransformComponent wrapperStyle={{height:"100%"}}>
+          <svg id="shapes" width="100%" height="100%"></svg>
+          <img src={src} alt="NASA" style={{ width: '100%', height: '100%'}} />
+>>>>>>> Stashed changes
 =======
         <TransformComponent wrapperStyle={{height:"100%"}}>
           <svg id="shapes" width="100%" height="100%"></svg>
