@@ -24,6 +24,8 @@
 
 li
 {
+	color: #e9eaf5ff;
+    font-family: Nexa-Heavy;
 	margin: 10px 0;
 	&:hover>.deleteSingle,&:hover>.location
 	{
@@ -39,6 +41,11 @@ li
 #crosshair
 {
 	display: none;
+}
+
+#outerdiv
+{
+	text-align:right;
 }
 
 #outerdiv:has(>#crosshair:checked)

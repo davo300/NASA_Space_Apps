@@ -142,7 +142,7 @@ const App: React.FC = () => {
       </div>
 
       <div id="mainColumn2">
-        <div className="LabelButtons">
+        <div className="LabelButtons">  
           <LabelToolbar
             onAddLabel={addLabel}
             onDeleteLabel={deleteLabel}

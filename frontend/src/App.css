@@ -14,13 +14,14 @@ html, body, #root
 #mainColumn
 {
     float: left;
-    width: 60%;
+    width: 56%;
 }
 
 #mainColumn2
 {
     float: left;
-    width: 40%;
+    width: 43%;
+    outline: 5px solid #e9eaf5ff;
 }
 
 @font-face 
@@ -76,8 +77,8 @@ text
     position:absolute;
     z-index: 2;
     padding:30px;
-    margin-block:8px;
-    right: 45%;
+    margin-block:6px;
+    transform:translateX(-30px);
     border: none;
     cursor: pointer;
     background-color: rgba(0,0,0,0);
@@ -97,7 +98,7 @@ text
 #zoomButtons.ZoomOutButton
 {
     background-image: url(src/assets/zoomOutIcon.png);
-    margin-top:76px;
+    margin-top:70px;
 }
 
 #zoomButtons.ZoomOutButton:active
