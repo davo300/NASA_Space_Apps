@@ -125,8 +125,8 @@ const App: React.FC = () => {
   }
 
   return (
-    <div id="body-1">
-      <h1 className="title">NASA Image Labeler</h1>
+    <div style={{ padding: 10 }}>
+      <h1 className="title">NASA Dataset Viewer</h1>
 
       <div className="LabelButtons">
         <LabelToolbar

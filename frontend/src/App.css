@@ -1,13 +1,23 @@
-#body-1
+html
 {
-    padding:20px;
+    background-color: black;
 }
+
+@font-face {
+    font-family: Nexa-Heavy;
+    src: url(/src/assets/Nexa-Heavy.ttf);
+    font-weight:bold;
+}
+
 
 .title
 {
-	margin: 0;
+	width: 40%;
+    margin-block:0px;
+    color: aliceblue;
 	display: block;
     text-align:left;
+    font-family: Nexa-Heavy;
 }
 
 .LabelButtons
