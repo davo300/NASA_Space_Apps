@@ -133,7 +133,7 @@ const App: React.FC = () => {
           onAddLabel={addLabel}
           onDeleteLabel={deleteLabel}
           onSaveLabels={saveLabels}
-          onClearLabels={() => setLabels([])}
+          onClearLabels={clearLabels}
         />
       </div>
 
