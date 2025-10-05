@@ -63,7 +63,8 @@ const ViewerPage: React.FC = () => {
   };
 
   const markLabel = (id: number, name?: string | null) => {
-    if (crosshairRef.current) crosshairRef.current.checked = true;
+    const crosshair = document.getElementById('crosshair') as HTMLInputElement;
+    if (crosshair) crosshair.checked = true;
     if (name) setLabelName(name);
     setCurrentLabelId(id);
   };
@@ -78,21 +79,43 @@ const ViewerPage: React.FC = () => {
   const outerDivClicked = (mouseX: number, mouseY: number) => {
     const outerdiv = document.getElementById("outerdiv");
     if (outerdiv) {
+
       const rect = outerdiv.getBoundingClientRect();
       mouseX -= rect.x;
       mouseY -= rect.y;
 
+      let scaled = outerdiv.lastElementChild?.firstElementChild as HTMLElement;
+      let transArray = scaled.style.transform.split(' ');
+      let [tXS, tYS, scaleStr] = transArray;
+      tXS = tXS.substring(10, tXS.length - 3)
+      tYS = tYS.substring(0, tYS.length - 3)
+      scaleStr = scaleStr.substring(6, scaleStr.length - 1)
+      console.log(tXS, tYS)
+      const scaleFactor = parseFloat(scaleStr)
+      const translateX = parseFloat(tXS)
+      const translateY = parseFloat(tYS)
+
       const shapes = document.getElementById("shapes");
-      if (crosshairRef.current && shapes) {
-        if (crosshairRef.current.checked) {
+      const crosshair = document.getElementById('crosshair') as HTMLInputElement;
+      if (crosshair && shapes) {
+        if (crosshair.checked) {
           const text = labelMap.get(currentLabelId);
           if (text) {
+
+            console.log(mouseX, mouseY)
+            mouseX -= translateX;
+            mouseY -= translateY;
+
+            mouseX /= scaleFactor;
+            mouseY /= scaleFactor;
+
             text.setAttribute("x", mouseX.toString());
             text.setAttribute("y", mouseY.toString());
             while (text.lastChild) text.removeChild(text.lastChild);
             text.append(currentLabelName);
+
           }
-          crosshairRef.current.checked = false;
+          crosshair.checked = false;
         }
       }
     }
@@ -115,7 +138,6 @@ const ViewerPage: React.FC = () => {
 
       <div className="Map">
         <ZoomableImage clickHandler={outerDivClicked} src={`http://localhost:8080/img/${imgName}`}/>
-        <input ref={crosshairRef} type="checkbox" id="crosshair" />
       </div>
 
       <div className="LabelsDisplay">
@@ -134,7 +156,6 @@ const ViewerPage: React.FC = () => {
         </svg>
 
         <ZoomableImage clickHandler={outerDivClicked} src={`http://localhost:8080/img/${imgName}`}/>
-        <input ref={crosshairRef} type="checkbox" id="crosshair" />
 
         <svg width="93%" height="200px">
           <rect width="100%" height="100%" fill="#0c0c0cff"> idk put something here </rect>
