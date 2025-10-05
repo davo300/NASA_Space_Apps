@@ -15,7 +15,7 @@ interface Props {
 const LabelList: React.FC<Props> = ({ labels, onSetLabel, onDeleteLabel }) => (
   <ul className="LabelList">
     {labels.map((label) => (
-      <li key={label.id}>
+      <li id="labeledItem" key={label.id}>
         <input type="text"/>
         <button className="location" onClick={(e) => onSetLabel(label.id, (e.currentTarget.previousElementSibling as HTMLInputElement).value)}>Set Location</button>
         <button className="deleteSingle" onClick={() => onDeleteLabel(label.id)}>X</button>
